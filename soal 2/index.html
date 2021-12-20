@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Femmy Friscilla Susilo 2172030">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap" rel="stylesheet">
+    <title>Soal 2</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<style>
+    body{
+        background-color: rgb(238,238,238);
+        font-family: 'poppins',sans-serif;
+    }
+    div{
+        background-color: rgb(255,255,255);
+    }
+    #kesatu{
+        width: 300px;
+        margin: auto;
+        border: solid black 1px;
+        text-align: center;
+        height: 35px;
+        padding-top: 12px;
+        font-size: 17px;
+        margin-top: 280px;
+    }
+    #kedua{
+        
+        position: fixed;
+        margin-left: 500px;
+        background-color: rgb(238,238,238);
+        margin-top: 280px;
+    }
+    .isi{
+        height: 35px;
+        width: 100px;
+        border: black solid 1px;
+        display: inline-block; 
+        margin-left: 45px;
+        text-align: center;
+    }
+</style>
+<body>
+    <div id="kesatu">Press any key to get the keyCode</div>
+    <div id="kedua"> 
+        <div id="a" class="isi"></div>
+        <div id="b" class="isi"></div>
+        <div id="c" class="isi"></div>
+    <script>
+        $("#kedua").hide();
+        document.addEventListener("keypress", berubah);
+        function berubah(){
+            $("#kesatu").hide();
+            $("#kedua").show();
+            document.getElementById("a").innerHTML = event.key;
+            document.getElementById("b").innerHTML = event.keyCode;
+            document.getElementById("c").innerHTML = event.code;
+        }
+    </script>
+    
+    <!-- 
+    </div>-->
+    
+</body>
+</html>

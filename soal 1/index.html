@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Femmy Friscilla Susilo 2172030">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;500&display=swap" rel="stylesheet">
+    <title>Soal 1</title>
+</head>
+<style>
+    body{
+        background-color: rgb(233,150,122);
+        font-family: 'poppins',sans-serif;
+    }
+    p{
+        font-size: 35px;
+        text-align: center;
+        margin-top: 280px;
+    }
+    div{
+        border: solid black 1px;
+        width: 120px;
+        height: 35px;
+        font-size: 15px;
+        text-align: center;
+        margin: auto;
+        padding-top: 10px;
+        margin-top: 250px;
+        background-color: rgb(190, 108, 81);
+        border-radius: 10px;
+    }
+    input{
+        width: 30px;
+        background-color: rgb(209,135,110);
+        border: rgb(209,135,110);
+    }
+</style>
+<body>
+    <p id="box"></p>
+    <div>Speed : <input type="number" min="1" max="10" id="angka" step="1" value="1"></div>
+    <!-- kalo ga jalan, input kasih value 1, step=1 -->
+    <script>
+        const isi = document.getElementById("box");
+        const cepet = document.getElementById("angka");
+
+        const text = "We Love Programming!"
+        let a = 1
+        let cepett = 300/cepet.value;
+
+        hasilJadi ()
+        function hasilJadi (){
+            isi.innerText = text.slice(0,a)
+            a++
+            if(a>text.length){
+                a = 1
+            }
+            setTimeout(hasilJadi,cepett)
+        }
+        cepet.addEventListener('input', function(e){
+            cepett = 300/e.target.value
+        })
+    </script>
+</body>
+</html>

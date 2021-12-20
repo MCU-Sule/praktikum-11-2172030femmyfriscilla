@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Femmy Friscilla Susilo 2172030">
+    <title>Soal 3</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    table{
+        width: 260px;
+        height: 260px;
+        border: blue 1px;
+        margin: auto;
+    }
+    td{
+        border: black solid 1px;
+        width: 120px; height: 120px;
+    }
+    .tombol{
+        width: 120px;
+        height: 35px;
+        margin-left: 705px;
+        background-color: rgb(254,155,128); 
+        margin-top: 5px;
+    }
+    .namaku{
+        background-color: rgb(131,208,233);
+        text-align: center;
+    }
+    img{
+        height: 120px; width: 120px;
+    }
+    .tabel2{
+        height: 120px;
+        border: black solid 1px;
+        margin-top: 20px;
+    }
+    
+</style>
+<body>
+    <script>
+        let angka = [1,2,3,4]
+        let random = Math.floor(Math.random()*angka.length)
+    </script>
+    <table>
+        <tr>
+            <td ondragover="allowDrop(event)" ondrop="drop(event)" id="kotak1"></td>
+            <td ondragover="allowDrop(event)" ondrop="drop(event)" id="kotak2"></td>
+        </tr>
+        <tr>
+            <td ondragover="allowDrop(event)" ondrop="drop(event)" id="kotak4"></td>
+            <td ondragover="allowDrop(event)" ondrop="drop(event)" id="kotak3"></td>
+        </tr>
+    </table>
+    <table class="tabel2" cellspacing="0" cellpadding="0">
+        <tr>
+            <td class="poto"><img src="assets/"+random[angka]+".jpg" alt="" id="ataskiri" draggable="true" ondragstart="drag(event)"></td>
+            <td class="poto"><img src="assets/2.jpg" alt="" id="ataskanan" draggable="true" ondragstart="drag(event)"></td>
+            <td class="poto"><img src="assets/3.jpg" alt="" id="bawahkanan" draggable="true" ondragstart="drag(event)"></td>
+            <td class="poto"><img src="assets/4.jpg" alt="" id="bawahkiri" draggable="true" ondragstart="drag(event)"></td>
+        </tr>
+    </table>
+        
+    <br><br>
+    <button class="tombol">Restart Game</button>
+    <br>
+    <div class="namaku"> Created by Femmy Friscilla Susilo (2172030) &copy; 2021</div>
+    
+
+    <script>
+        function allowDrop(event) {
+            event.preventDefault();
+            console.log("a")
+        }
+
+        function drag(event) {
+            event.dataTransfer.setData("text", event.target.id);
+            console.log("b")
+        }
+
+        function drop(event) {
+            event.preventDefault();
+            console.log("c")
+            var data = event.dataTransfer.getData("text");
+            event.target.appendChild(document.getElementById(data));
+        }
+    </script>
+</body>
+</html>

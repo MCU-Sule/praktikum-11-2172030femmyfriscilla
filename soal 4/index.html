@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="Femmy Friscilla Susilo 2172030">
+    <title>Soal 4</title>
+</head>
+<style>
+    table{
+        border: black solid 1px;
+        width: 450px;
+        height: 80px;
+        margin-left: 530px;
+    }
+    td{
+        border: black solid 1px;
+        width: 20px;
+        text-align: center;
+    }
+    #isian{
+        border: black solid 1px;
+        width: 450px;
+        height: 250px;
+        margin-top: 20px;
+        margin-left: 530px;
+        overflow-x: hidden;
+    }
+    .setail{
+        width: 60px;
+        height: 60px;
+        margin-left: 64px;
+    }
+    #tombol{
+        margin-top: 9px;
+        width: 450px;
+        margin-left: 530px;
+    }
+</style>
+<body>
+    <table cellspacing="0">
+        <tr>
+            <td id="kotak1">P</td>
+            <td id="kotak2"></td>
+            <td id="kotak3"></td>
+            <td id="kotak4"></td>
+            <td id="kotak5"></td>
+            <td id="kotak6"></td>
+            <td id="kotak7"></td>
+            <td id="kotak8"></td>
+            <td id="kotak9"></td>
+            <td id="kotak10"></td>
+        </tr>
+        <tr>
+            <td id="box1">E</td>
+            <td id="box2"></td>
+            <td id="box3"></td>
+            <td id="box4"></td>
+            <td id="box5"></td>
+            <td id="box6"></td>
+            <td id="box7"></td>
+            <td id="box8"></td>
+            <td id="box9"></td>
+            <td id="box10"></td>
+        </tr>
+    </table>
+    <div id="isian"></div>
+    <div id="tombol">
+        <button class="setail" id="player1" value="batu" onclick="batu()">Batu</button>
+        <button class="setail" id="player2" value="gunting" onclick="gunting()">Gunting</button>
+        <button class="setail" id="player3" value="kertas" onclick="kertas()">Kertas</button>
+    </div>
+
+    <script>
+        let bot = ["batu","gunting","kertas"]
+        let acak;
+        let compt;
+        console.log(bot);
+        let pindah =1;
+        let pindahh =1;
+        function komputer(){
+            acak = Math.floor(Math.random()*bot.length);
+            compt = bot[acak];
+            console.log("computer: "+compt); 
+        }
+        function batu(){
+            /*format nulis : 
+              Batu(User) ketemu xxx(com), Draw/Musuh Maju/Pemain Maju
+            */
+            komputer();
+            let saya = document.getElementById("player1").value;
+            let baris = document.createElement("br");
+            console.log("pemain : "+saya);
+            console.log(compt)
+            if (compt == "batu"){
+                document.getElementById("isian").append("Batu(User) ketemu Batu(com), Draw") 
+            }
+            else if(compt == "gunting" && pindah>0 &&pindah<10 &&pindahh>0 &&pindahh<10){
+                document.getElementById("isian").append("Batu(User) ketemu Gunting(com), Pemain Maju")
+                document.getElementById("kotak"+pindah).innerHTML = " " 
+                console.log(pindah)
+                pindah++
+                document.getElementById("kotak"+pindah).innerHTML = "P"
+                console.log(pindah)
+            }
+            else if(compt == "kertas" && pindah>0 &&pindah<10 &&pindahh>0 &&pindahh<10){
+                document.getElementById("isian").append("Batu(User) ketemu Kertas(com), Musuh Maju") 
+                document.getElementById("box"+pindahh).innerHTML = " "
+                console.log(pindahh)
+                pindahh++
+                document.getElementById("box"+pindahh).innerHTML = "E"
+                console.log(pindahh)
+            }
+            document.getElementById("isian").append(baris);
+            menang();
+        }
+        function gunting(){
+            komputer();
+            let saya =document.getElementById("player2").value;
+            let baris = document.createElement("br");
+            console.log("pemain : "+saya)
+            console.log(compt)
+            if(compt == "gunting"){
+                document.getElementById("isian").append("Gunting(User) ketemu Gunting(com), Draw")
+            }
+            else if(compt == "kertas"){
+                document.getElementById("isian").append("Gunting(User) ketemu Kertas(com), Pemain Maju")
+                document.getElementById("kotak"+pindah).innerHTML = " " 
+                console.log(pindah)
+                pindah++
+                document.getElementById("kotak"+pindah).innerHTML = "P"
+                console.log(pindah)
+            }
+            else if(compt == "batu"){
+                document.getElementById("isian").append("Gunting(User) ketemu Batu(com), Musuh Maju")
+                document.getElementById("box"+pindahh).innerHTML = " "
+                console.log(pindahh)
+                pindahh++
+                document.getElementById("box"+pindahh).innerHTML = "E"
+                console.log(pindahh)
+            }
+            document.getElementById("isian").append(baris);
+            menang();
+        }
+        function kertas(){
+            komputer();
+            let saya =document.getElementById("player3").value;
+            let baris = document.createElement("br");
+            console.log("pemain : "+saya)
+            console.log(compt)
+            if(compt=="kertas"){
+                document.getElementById("isian").append("Kertas(User) ketemu Kertas(com), Draw")
+            }
+            else if(compt=="batu"){
+                document.getElementById("isian").append("Kertas(User) ketemu Batu(com), Pemain Maju")
+                document.getElementById("kotak"+pindah).innerHTML = " " 
+                console.log(pindah)
+                pindah++
+                document.getElementById("kotak"+pindah).innerHTML = "P"
+                console.log(pindah)
+            }
+            else if(compt=="gunting"){
+                document.getElementById("isian").append("Kertas(User) ketemu Gunting(com), Musuh Maju")
+                document.getElementById("box"+pindahh).innerHTML = " "
+                console.log(pindahh)
+                pindahh++
+                document.getElementById("box"+pindahh).innerHTML = "E"
+                console.log(pindahh)
+            }
+            document.getElementById("isian").append(baris);
+            menang();
+        }
+
+        function menang(){
+            let a = document.getElementById("kotak10").innerHTML;
+            let b = document.getElementById("box10").innerHTML;
+            if (a == "P"){
+                
+                if(confirm("anda Menang!")){
+                    let pindah =1;
+                    let pindahh =1;
+                    document.getElementById("isian").innerHTML = " "
+                    document.getElementById("kotak1").innerHTML = "P"
+                    document.getElementById("kotak10").innerHTML = " "
+                    document.getElementById("box1").innerHTML = "E"
+                    document.getElementById("box2").innerHTML = " "
+                    document.getElementById("box3").innerHTML = " "
+                    document.getElementById("box4").innerHTML = " "
+                    document.getElementById("box5").innerHTML = " "
+                    document.getElementById("box6").innerHTML = " "
+                    document.getElementById("box7").innerHTML = " "
+                    document.getElementById("box8").innerHTML = " "
+                    document.getElementById("box9").innerHTML = " "
+                }
+            }
+            else if (b == "E"){
+                if(confirm("anda Kalah!")){
+                    pindah=1;
+                    pindahh=1;
+                    document.getElementById("isian").innerHTML = " "
+                    document.getElementById("kotak1").innerHTML = "P"
+                    document.getElementById("box1").innerHTML = "E"
+                    document.getElementById("box10").innerHTML = " "
+                    document.getElementById("kotak2").innerHTML = " "
+                    document.getElementById("kotak3").innerHTML = " "
+                    document.getElementById("kotak4").innerHTML = " "
+                    document.getElementById("kotak5").innerHTML = " "
+                    document.getElementById("kotak6").innerHTML = " "
+                    document.getElementById("kotak7").innerHTML = " "
+                    document.getElementById("kotak8").innerHTML = " "
+                    document.getElementById("kotak9").innerHTML = " "
+                    document.getElementById("kotak10").innerHTML = " "
+                }
+            }
+        }
+        
+    </script>
+
+</body>
+</html>
